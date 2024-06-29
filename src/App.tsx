@@ -1,4 +1,6 @@
+import { Children } from "react";
 import "./App.css";
+import { GuestRoute, PrivateRoute } from "./AuthRoute";
 import Main from "./components/Main";
 import NotFound from "./components/NotFound";
 import SignIn from "./components/SignIn";
@@ -10,9 +12,30 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<Main />} />
+          <Route
+            path="/signin"
+            element={
+              <GuestRoute>
+                <SignIn />
+              </GuestRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <GuestRoute>
+                <SignUp />
+              </GuestRoute>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Main />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
