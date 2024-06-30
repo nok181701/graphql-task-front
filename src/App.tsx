@@ -1,4 +1,3 @@
-import { Children } from "react";
 import "./App.css";
 import { GuestRoute, PrivateRoute } from "./AuthRoute";
 import Main from "./components/Main";
